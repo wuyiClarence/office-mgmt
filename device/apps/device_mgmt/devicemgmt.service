@@ -1,0 +1,13 @@
+[Unit]
+Description=Device Management Service
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/devicemgmt
+Restart=always  
+RestartSec=5    
+User=root       
+Environment=ENV_VAR=value  
+
+[Install]
+WantedBy=multi-user.target

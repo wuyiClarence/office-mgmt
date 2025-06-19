@@ -1,0 +1,86 @@
+version: '3.8'
+services:
+  mysql:
+    container_name: officemgmt-mysql
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD:  ${MYSQL_PASSWORD}
+    volumes:
+      - ${MYSQL_DATA_DIR}:/var/lib/mysql
+    ports:
+      - "23306:3306"
+    restart: unless-stopped
+
+  mosquitto:
+    image: eclipse-mosquitto:2.0.15
+    container_name: officemgmt-mosquitto
+    restart: unless-stopped
+    ports:
+      - "21883:1883"
+    volumes:
+      - ${MQTT_DATA_DIR}/config:/mosquitto/config
+      - ${MQTT_DATA_DIR}/data:/mosquitto/data
+      - ${MQTT_DATA_DIR}/log:/mosquitto/log
+
+  mdns:
+    network_mode: "host"
+    build:
+      context: ..
+      dockerfile: ./deploy/mdns-Dockerfile
+    image: platform-mdns
+    container_name: officemgmt-mdns
+    restart: unless-stopped
+    environment:
+      - CONFIG_PATH=/app/config
+    volumes:
+      - ${MDNS_DATA_DIR}/config:/app/config
+      - ${MDNS_DATA_DIR}/runtime/logs:/app/runtime/logs
+    
+  wakeonlan:
+    network_mode: "host"
+    build:
+      context: ..
+      dockerfile: ./deploy/wakeonlan-Dockerfile
+    image: platform-wakeonlan
+    container_name: officemgmt-wakeonlan
+    restart: unless-stopped
+    environment:
+      - CONFIG_PATH=/app/config
+    volumes:
+      - ${WAKEONLAN_DATA_DIR}/config:/app/config
+      - ${WAKEONLAN_DATA_DIR}/runtime/logs:/app/runtime/logs
+    
+
+  backend:
+    build:
+      context: ..
+      dockerfile: ./deploy/backend-Dockerfile
+    image: platform-backend
+    container_name: officemgmt-backend
+    restart: unless-stopped
+    environment:
+      - CONFIG_PATH=/app/config
+    volumes:
+      - ${BACKEND_DATA_DIR}/config:/app/config
+      - ${BACKEND_DATA_DIR}/runtime/logs:/app/runtime/logs
+    depends_on:
+      - mysql
+      - mosquitto
+
+  frontend:
+    build:
+      context: ../platform-ui
+      dockerfile: ../deploy/frontend-Dockerfile
+    image: platform-ui
+    container_name: officemgmt-frontend
+    restart: unless-stopped
+    volumes:
+      - ${FRONTEND_DATA_DIR}/config/nginx.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "8888:80"
+    depends_on:
+      - backend
+  

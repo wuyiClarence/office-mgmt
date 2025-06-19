@@ -1,0 +1,16 @@
+App:
+  Name: platform-mdns
+  Address: ":8088"
+  Mod: debug
+  LogExpire: 7
+MqttConfig:
+  Broker: ""
+  UserName: ""
+  Password: ""
+  Port: 21883
+MdnsConfig:
+  Domain: "local."
+  Host: "officemgmt"
+  Key: "zwxlink"
+  ServiceName: "_officemgmt._tcp"
+  Port: 80

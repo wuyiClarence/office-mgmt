@@ -1,0 +1,46 @@
+.user-dropdown {
+  &-wrapper {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+
+    .user-name-display {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      span {
+        font-size: 14px;
+        font-weight: bold;
+        margin-right: 4px; // 调整文字与箭头的间距
+      }
+    }
+  }
+
+  .dropdown-menu {
+    min-width: 120px; // 控制菜单宽度
+    margin-top: 2px; // 菜单和用户名间的间距
+    text-align: center; // 居中显示文字
+
+    .ivu-dropdown-item {
+      font-size: 14px;
+      color: #333; // 默认字体颜色
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: #7b7676; // 鼠标悬停时背景颜色
+        color: #000; // 鼠标悬停时字体颜色
+      }
+
+      &[name="logout"] {
+        font-weight: bold; // 突出显示
+        color: #d9534f; // 深色红，强调退出按钮
+        &:hover {
+          background-color: #f8d7da; // 鼠标悬停时的浅红色背景
+          color: #c9302c; // 鼠标悬停时更深的红色字体
+        }
+      }
+    }
+  }
+}

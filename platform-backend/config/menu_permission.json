@@ -1,0 +1,343 @@
+{
+    "permissionList": [
+        {
+            "name": "设备管理",
+            "key": "DEVICE_MGMT",
+            "roleAdmin": true,
+            "roleUser": true,
+            "roleAll": true,
+            "apis": [
+                {
+                    "method": "GET",
+                    "path": "/api/device/list"
+                }
+            ],
+            "children": [
+                {
+                    "name": "设备列表",
+                    "key": "DEVICE_LIST",
+                    "roleAdmin": true,
+                    "roleUser": true,
+                    "roleAll": true,
+                    "apis": [
+                        {
+                            "method": "GET",
+                            "path": "/api/device/list"
+                        }
+                    ],
+                    "children": [
+                        {
+                            "name": "开机",
+                            "key": "DEVICE_POWER_ON",
+                            "roleAdmin": true,
+                            "roleUser": true,
+                            "roleAll": true,
+                            "apis": [
+                                {
+                                    "method": "POST",
+                                    "path": "/api/device/poweron"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "关机",
+                            "key": "DEVICE_POWER_OFF",
+                            "roleAdmin": true,
+                            "roleUser": true,
+                            "roleAll": true,
+                            "apis": [
+                                {
+                                    "method": "POST",
+                                    "path": "/api/device/poweroff"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "编辑",
+                            "key": "DEVICE_EDIT",
+                            "roleAdmin": true,
+                            "roleUser": true,
+                            "roleAll": true,
+                            "apis": [
+                                {
+                                    "method": "PUT",
+                                    "path": "/api/device/update"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "删除",
+                            "key": "DEVICE_DELETE",
+                            "roleAdmin": true,
+                            "roleUser": false,
+                            "roleAll": false,
+                            "apis": [
+                                {
+                                    "method": "DELETE",
+                                    "path": "/api/device/delete"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "服务器组",
+                    "key": "DEVICE_GROUP",
+                    "roleAdmin": true,
+                    "roleUser": false,
+                    "roleAll": false,
+                    "apis": [
+                        {
+                            "method": "GET",
+                            "path": "/api/device_group/list"
+                        }
+                    ],
+                    "children": [
+                        {
+                            "name": "开机",
+                            "key": "DEVICE_GROUP_POWER_ON",
+                            "roleAdmin": true,
+                            "roleUser": true,
+                            "roleAll": true,
+                            "apis": [
+                                {
+                                    "method": "POST",
+                                    "path": "/api/device_group/poweron"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "关机",
+                            "key": "DEVICE_GROUP_POWER_OFF",
+                            "roleAdmin": true,
+                            "roleUser": true,
+                            "roleAll": true,
+                            "apis": [
+                                {
+                                    "method": "POST",
+                                    "path": "/api/device_group/poweroff"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "添加",
+                            "key": "DEVICE_GROUP_ADD",
+                            "roleAdmin": true,
+                            "roleUser": false,
+                            "roleAll": false,
+                            "apis": [
+                                {
+                                    "method": "POST",
+                                    "path": "/api/device_group/create"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "编辑",
+                            "key": "DEVICE_GROUP_EDIT",
+                            "roleAdmin": true,
+                            "roleUser": false,
+                            "roleAll": false,
+                            "apis": [
+                                {
+                                    "method": "PUT",
+                                    "path": "/api/device_group/update"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "删除",
+                            "key": "DEVICE_GROUP_DEL",
+                            "roleAdmin": true,
+                            "roleUser": false,
+                            "roleAll": false,
+                            "apis": [
+                                {
+                                    "method": "DELETE",
+                                    "path": "/api/device_group/delete"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "策略管理",
+            "key": "POLICY_MGMT",
+            "roleAdmin": true,
+            "roleUser": false,
+            "roleAll": false,
+            "apis": [],
+            "children": [
+                {
+                    "name": "策略列表",
+                    "key": "POLICY_LIST",
+                    "roleAdmin": true,
+                    "roleUser": false,
+                    "roleAll": false,
+                    "apis": [],
+                    "children": [
+                        {
+                            "name": "添加",
+                            "key": "POLICY_ADD",
+                            "roleAdmin": true,
+                            "roleUser": false,
+                            "roleAll": false,
+                            "apis": [
+                                {
+                                    "method": "POST",
+                                    "path": "/api/policy/create"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "编辑",
+                            "key": "POLICY_EDIT",
+                            "roleAdmin": true,
+                            "roleUser": false,
+                            "roleAll": false,
+                            "apis": [
+                                {
+                                    "method": "PUT",
+                                    "path": "/api/policy/update"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "删除",
+                            "key": "POLICY_DEL",
+                            "roleAdmin": true,
+                            "roleUser": false,
+                            "roleAll": false,
+                            "apis": [
+                                {
+                                    "method": "DELETE",
+                                    "path": "/api/policy/delete"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "用户管理",
+            "key": "USER_MGMT",
+            "roleAdmin": true,
+            "roleUser": false,
+            "roleAll": false,
+            "apis": [],
+            "children": [
+                {
+                    "name": "用户列表",
+                    "key": "USER_LIST",
+                    "roleAdmin": true,
+                    "roleUser": false,
+                    "roleAll": false,
+                    "apis": [
+                        {
+                            "method": "GET",
+                            "path": "/api/user/list"
+                        }
+                    ],
+                    "children": [
+                        {
+                            "name": "添加",
+                            "key": "USER_ADD",
+                            "roleAdmin": true,
+                            "roleUser": false,
+                            "roleAll": false,
+                            "apis": [
+                                {
+                                    "method": "POST",
+                                    "path": "/api/user/create"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "编辑",
+                            "key": "USER_EDIT",
+                            "roleAdmin": true,
+                            "roleUser": false,
+                            "roleAll": false,
+                            "apis": [
+                                {
+                                    "method": "PUT",
+                                    "path": "/api/user/update_info"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "删除",
+                            "key": "USER_DEL",
+                            "roleAdmin": true,
+                            "roleUser": false,
+                            "roleAll": false,
+                            "apis": [
+                                {
+                                    "method": "DELETE",
+                                    "path": "/api/user/delete"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "用户角色",
+                    "key": "ROLE_LIST",
+                    "roleAdmin": true,
+                    "roleUser": false,
+                    "roleAll": false,
+                    "apis": [
+                        {
+                            "method": "GET",
+                            "path": "/api/role/list"
+                        }
+                    ],
+                    "children": [
+                        {
+                            "name": "添加",
+                            "key": "ROLE_ADD",
+                            "roleAdmin": true,
+                            "roleUser": false,
+                            "roleAll": false,
+                            "apis": [
+                                {
+                                    "method": "POST",
+                                    "path": "/api/role/create"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "编辑",
+                            "key": "ROLE_EDIT",
+                            "roleAdmin": true,
+                            "roleUser": false,
+                            "roleAll": false,
+                            "apis": [
+                                {
+                                    "method": "PUT",
+                                    "path": "/api/role/update"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "删除",
+                            "key": "ROLE_DEL",
+                            "roleAdmin": true,
+                            "roleUser": false,
+                            "roleAll": false,
+                            "apis": [
+                                {
+                                    "method": "DELETE",
+                                    "path": "/api/role/delete"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

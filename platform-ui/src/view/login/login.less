@@ -1,0 +1,51 @@
+.login {
+    width: 100%;
+    height: 100%;
+    background-image: url('../../assets/images/login-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  
+    /* 企业名字样式，放在背景图的正上方居中 */
+    .company-name {
+      position: absolute;
+      top: 88px; /* 距离顶部 */
+      left: 50%;
+      transform: translateX(-50%); /* 水平居中 */
+      font-size: 66px;
+      font-family: 'Pacifico', cursive; /* 使用艺术字体 */
+      color: #ffffff;
+      font-weight: bold;
+      text-align: center;
+      z-index: 100;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); /* 字体阴影效果 */
+      background: linear-gradient(to right, #f8f6f7, #ddd4d4); /* 蓝色渐变 */
+      -webkit-background-clip: text; /* 只对文字本身应用渐变 */
+      color: transparent; /* 渐变只影响文字 */
+    }
+  
+    &-con {
+      position: absolute;
+      left: 50%;
+      top: 30%;
+      transform: translateX(-50%);
+      width: 300px;
+  
+      &-header {
+        font-size: 16px;
+        font-weight: 300;
+        text-align: center;
+        padding: 30px 0;
+      }
+  
+      .form-con {
+        padding: 10px 0 0;
+      }
+  
+      .login-tip {
+        font-size: 10px;
+        text-align: center;
+        color: #c3c3c3;
+      }
+    }
+  }

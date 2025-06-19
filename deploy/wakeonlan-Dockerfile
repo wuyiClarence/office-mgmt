@@ -1,0 +1,26 @@
+FROM golang:1.23 AS builder
+
+ENV GOPROXY=https://goproxy.cn,direct
+
+WORKDIR /app
+
+COPY ./platform-wakeonlan/go.mod ./platform-wakeonlan/go.sum ./
+RUN --mount=type=cache,target=/go/pkg/mod \
+    go mod download -x && go mod verify
+
+COPY ./platform-wakeonlan .
+
+RUN CGO_ENABLED=0 GOOS=linux go build -o platform-wakeonlan .
+
+FROM alpine:latest
+
+WORKDIR /app
+
+# 复制二进制文件和配置文件到运行环境
+COPY --from=builder /app/platform-wakeonlan ./
+
+# 设置环境变量指定配置文件路径
+ENV CONFIG_PATH="/app/config"
+
+
+CMD ["sh", "-c", "echo 'Starting app...'; ./platform-wakeonlan"]

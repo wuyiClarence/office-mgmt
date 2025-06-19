@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  platform-mdns:
+    build:
+      context: ..
+      dockerfile: build/Dockerfile
+    container_name: platform-mdns
+    image: platform-mdns
+    environment:
+      - CONFIG_PATH=config
+    ports:
+      - "8088:8088"
+    volumes:
+      - ../config:/app/config
+      - ../runtime/logs:/app/runtime/logs
+    restart: no

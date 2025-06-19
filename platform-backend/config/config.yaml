@@ -1,0 +1,22 @@
+App:
+  Name: platform-backend
+  Address: ":8080"
+  Mod: debug
+  LogExpire: 7
+Mysql:
+  Dsn: root:officemgmt123abc@tcp(192.168.10.28:23306)/office-mgmt?parseTime=true&rejectReadOnly=true
+  MaxIdle: 3
+  MaxOpen: 3
+  Name:
+  Debug: true
+AutoMigration: true
+CronGapTime: 10
+MqttConfig:
+  Broker: "tcp://192.168.10.28:21883"
+  ClientID: "devicemgmt-server"
+  UserName: "officemgmt"
+  Password: "officemgmtuser123"
+  KeepAlive: 20
+  ConnectTimeOut: 100
+  MaxReconnectInterval: 60
+PasswordAuthKey: 973e53c7

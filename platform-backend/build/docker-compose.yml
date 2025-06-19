@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  platform-backend:
+    build:
+      context: ..
+      dockerfile: build/Dockerfile
+    container_name: platform-backend
+    image: platform-backend
+    environment:
+      - CONFIG_PATH=config
+    ports:
+      - "8080:8080"
+    volumes:
+      - ../config:/app/config
+      - ../runtime/logs:/app/runtime/logs
+    restart: no

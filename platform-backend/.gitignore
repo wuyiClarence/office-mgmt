@@ -1,0 +1,4 @@
+.idea/
+.vscode/
+/runtime/logs
+.DS_Store

@@ -1,0 +1,2532 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/api/device/list": {
+            "get": {
+                "description": "DeviceList Api 查询用户拥有的设备",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Device"
+                ],
+                "summary": "DeviceList",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "页索引",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "页大小",
+                        "name": "page_size",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.DeviceListRes"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/permission/alluser": {
+            "get": {
+                "description": "PermissionAllUser Api 查询资源分配给所有人的权限情况",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Permission"
+                ],
+                "summary": "PermissionAllUser",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "资源ID",
+                        "name": "resource_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "资源类型",
+                        "name": "resource_type",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.PermissionListRes"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "PutPermissionAllUser Api 修改资源分配给所有人的权限",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Permission"
+                ],
+                "summary": "PutPermissionAllUser",
+                "parameters": [
+                    {
+                        "description": "Put Permission AllUser request body",
+                        "name": "PutPermissionAllUser",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.ResourcePermissionPutReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/permission/list": {
+            "get": {
+                "description": "PermissionList Api 查询用户可调用的api列表",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Permission"
+                ],
+                "summary": "PermissionList",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.PermissionListRes"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/permission/role": {
+            "get": {
+                "description": "PermissionRole Api 查询资源分配给指定角色的情况",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Permission"
+                ],
+                "summary": "PermissionRole",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "资源ID",
+                        "name": "resource_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "资源类型",
+                        "name": "resource_type",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.RoleResourcePermissionRes"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "PutPermissionRole Api 修改资源分配给指定用户的权限",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Permission"
+                ],
+                "summary": "PutPermissionRole",
+                "parameters": [
+                    {
+                        "description": "Put Permission User request body",
+                        "name": "ResourcePermissionPutUserReq",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.ResourcePermissionPutUserReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/permission/user": {
+            "get": {
+                "description": "PermissionUser Api 查询资源分配给指定人的权限情况",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Permission"
+                ],
+                "summary": "PermissionUser",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "资源ID",
+                        "name": "resource_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "资源类型",
+                        "name": "resource_type",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.UserResourcePermissionRes"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "PutPermissionUser Api 修改资源分配给指定用户的权限",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Permission"
+                ],
+                "summary": "PutPermissionUser",
+                "parameters": [
+                    {
+                        "description": "Put Permission User request body",
+                        "name": "ResourcePermissionPutUserReq",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.ResourcePermissionPutUserReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/policy/create": {
+            "put": {
+                "description": "PolicyCreate Api",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Policy"
+                ],
+                "summary": "PolicyCreate",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer token",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "Create Policy request body",
+                        "name": "PolicyCreate",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.PolicyCreateReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/policy/delete": {
+            "delete": {
+                "description": "PolicyDelete Api",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Policy"
+                ],
+                "summary": "PolicyDelete",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer token",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "Del Policy request body",
+                        "name": "PolicyDelete",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.PolicyDelReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/policy/device/list": {
+            "get": {
+                "description": "DevicePolicyList Api",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Policy"
+                ],
+                "summary": "DevicePolicyList",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "页索引",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "页大小",
+                        "name": "page_size",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.DevicePolicyListRes"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/policy/device_group/list": {
+            "get": {
+                "description": "DeviceGroupPolicyList Api",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Policy"
+                ],
+                "summary": "DeviceGroupPolicyList",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "页索引",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "页大小",
+                        "name": "page_size",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.DeviceGroupPolicyListRes"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/policy/update": {
+            "post": {
+                "description": "PolicyUpdate Api",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Policy"
+                ],
+                "summary": "PolicyUpdate",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer token",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "Update Policy request body",
+                        "name": "PolicyUpdate",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.PolicyUpdateReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/role/assign": {
+            "put": {
+                "description": "RoleAssign Api",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Role"
+                ],
+                "summary": "RoleAssign",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer token",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "角色分配",
+                        "name": "RoleAssign",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.RoleAssignReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/role/create": {
+            "post": {
+                "description": "RoleCreate Api",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Role"
+                ],
+                "summary": "RoleCreate",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer token",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "创建用户",
+                        "name": "RoleCreate",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.RoleCreateReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/role/delete": {
+            "delete": {
+                "description": "RoleDelete Api",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Role"
+                ],
+                "summary": "RoleDelete",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer token",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "删除角色",
+                        "name": "RoleDelete",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.RoleDelReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/role/delete_assign": {
+            "delete": {
+                "description": "RoleAssignDelete Api",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Role"
+                ],
+                "summary": "RoleAssignDelete",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer token",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "删除角色分配",
+                        "name": "RoleAssignDelete",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.RoleDelAssignReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/role/devices": {
+            "get": {
+                "description": "RoleDeviceList Api 查询角色下管理的设备",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Role"
+                ],
+                "summary": "RoleDeviceList",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "页索引",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "页大小",
+                        "name": "page_size",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "角色id",
+                        "name": "role_id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.RoleDeviceList"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/role/list": {
+            "get": {
+                "description": "RoleList Api",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Role"
+                ],
+                "summary": "RoleList",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "页索引",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "页大小",
+                        "name": "page_size",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "角色名字",
+                        "name": "role_name",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.RoleListRes"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/role/menu_permission": {
+            "get": {
+                "description": "RoleMenuPermission Api 查询角色拥有的菜单权限",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Role"
+                ],
+                "summary": "RoleMenuPermission",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "角色id",
+                        "name": "role_id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.PermissionListRes"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "UpdateRoleMenuPermission Api 更新角色拥有的菜单权限",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Role"
+                ],
+                "summary": "UpdateRoleMenuPermission",
+                "parameters": [
+                    {
+                        "description": "Update Role Menu Permission request body",
+                        "name": "RoleMenuPermissionUpdate",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.RoleUpdateMenuPermissionReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/role/device_groups": {
+            "get": {
+                "description": "RoleDeviceGroupList Api 查询角色下管理的服务器组",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Role"
+                ],
+                "summary": "RoleDeviceGroupList",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "页索引",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "页大小",
+                        "name": "page_size",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "角色id",
+                        "name": "role_id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.RoleDeviceGroupList"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/role/update": {
+            "put": {
+                "description": "RoleUpdate Api",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Role"
+                ],
+                "summary": "RoleUpdate",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer token",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "更新角色",
+                        "name": "RoleUpdate",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.RoleUpdateReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/role/users": {
+            "get": {
+                "description": "RoleUserList Api 查询角色下管理的用户",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Role"
+                ],
+                "summary": "RoleUserList",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "页索引",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "页大小",
+                        "name": "page_size",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "角色id",
+                        "name": "role_id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.RoleUserList"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/role/users_with_role": {
+            "get": {
+                "description": "UserWithRoleList Api 查询拥有当前权限的用户",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Role"
+                ],
+                "summary": "UserWithRoleList",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "页索引",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "页大小",
+                        "name": "page_size",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "角色id",
+                        "name": "role_id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.UserWithRoleList"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/device_group/create": {
+            "put": {
+                "description": "DeviceGroupCreate Api",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Device-Group"
+                ],
+                "summary": "DeviceGroupCreate",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer token",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "Create DeviceGroup request body",
+                        "name": "DeviceGroupCreate",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.DeviceGroupCreateReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/device_group/delete": {
+            "delete": {
+                "description": "DeviceGroupDelete Api",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Device-Group"
+                ],
+                "summary": "DeviceGroupDelete",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer token",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "Del DeviceGroup request body",
+                        "name": "DeviceGroupDelete",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.DeviceGroupDelReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/device_group/detail": {
+            "get": {
+                "description": "DeviceGroupDetail Api",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Device-Group"
+                ],
+                "summary": "DeviceGroupDetail",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "id",
+                        "name": "device_group_id",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.DeviceGroupDetail"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/device_group/list": {
+            "get": {
+                "description": "DeviceGroupList Api",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Device-Group"
+                ],
+                "summary": "DeviceGroupList",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "页索引",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "页大小",
+                        "name": "page_size",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.DeviceGroupListRes"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/device_group/update": {
+            "post": {
+                "description": "DeviceGroupUpdate Api",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Device-Group"
+                ],
+                "summary": "DeviceGroupUpdate",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer token",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "Update DeviceGroup request body",
+                        "name": "DeviceGroupUpdate",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.DeviceGroupUpdateReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/user/create": {
+            "post": {
+                "description": "UserCreate Api 创建用户",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "UserCreate",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer token",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "Create User request body",
+                        "name": "UserCreate",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.UserCreateReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/user/delete": {
+            "delete": {
+                "description": "UserDelete Api 删除用户",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "UserDelete",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer token",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "Delete User request body",
+                        "name": "UserDelete",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.UserDeleteReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/user/info": {
+            "get": {
+                "description": "UserInfo Api 查询用户的信息，包含用户权限",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "UserInfo",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.UserInfoRes"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/list": {
+            "get": {
+                "description": "UserList Api 查询用户的信息，包含用户权限",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "UserList",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "页索引",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "页大小",
+                        "name": "page_size",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.UserListRes"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/login": {
+            "post": {
+                "description": "UserLogIn Api 用户登陆",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "UserLogIn",
+                "parameters": [
+                    {
+                        "description": "UserLogin request body",
+                        "name": "UserLogin",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.UserLoginApiReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.UserLoginApiRes"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/logout": {
+            "post": {
+                "description": "UserLogOut Api 用户退出登录",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "UserLogOut",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/user/refresh_token": {
+            "post": {
+                "description": "UserRefreshToken Api 刷新access-token",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "UserRefreshToken",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer token",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "UserRefreshToken request body",
+                        "name": "UserRefreshToken",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.UserRefreshTokenReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.UserRefreshTokenRes"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/reset_password": {
+            "post": {
+                "description": "UserResetPassword Api 重置密码",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "UserResetPassword",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer token",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "Reset User Password request body",
+                        "name": "UserResetPassword",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.UserResetPasswordReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/user/update_info": {
+            "put": {
+                "description": "UserUpdateInfo Api 更新用户信息",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "UserUpdateInfo",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer token",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "Update User Info request body",
+                        "name": "UserUpdateInfo",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.UserUpdateInfoReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/user/update_password": {
+            "post": {
+                "description": "UserUpdatePassword Api 更新密码",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "UserUpdatePassword",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer token",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "UserUpdatePassword request body",
+                        "name": "UserUpdatePassword",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.UserUpdatePasswordApiReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "dto.DeviceDetail": {
+            "type": "object",
+            "properties": {
+                "device_name": {
+                    "type": "string"
+                },
+                "device_type": {
+                    "$ref": "#/definitions/enum.DeviceType"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "ip": {
+                    "type": "string"
+                },
+                "mac": {
+                    "type": "string"
+                },
+                "os_type": {
+                    "type": "string"
+                },
+                "status": {
+                    "enum": [
+                        0,
+                        1
+                    ],
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/enum.DeviceStatus"
+                        }
+                    ]
+                }
+            }
+        },
+        "dto.DeviceListRes": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.DeviceDetail"
+                    }
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.DevicePolicyDetail": {
+            "type": "object",
+            "properties": {
+                "cron_str": {
+                    "type": "string"
+                },
+                "device": {
+                    "$ref": "#/definitions/models.Device"
+                },
+                "execute_type": {
+                    "type": "integer"
+                },
+                "policy_id": {
+                    "type": "integer"
+                },
+                "policy_name": {
+                    "type": "string"
+                },
+                "policy_type": {
+                    "$ref": "#/definitions/enum.PolicyType"
+                },
+                "single_exec_time": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.DevicePolicyListRes": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.DevicePolicyDetail"
+                    }
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.Permission": {
+            "type": "object",
+            "properties": {
+                "children": {
+                    "description": "子资源，可能为空",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.Permission"
+                    }
+                },
+                "key": {
+                    "$ref": "#/definitions/enum.PermissionKey"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "order": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.PermissionListRes": {
+            "type": "object",
+            "properties": {
+                "menu": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/enum.PermissionKey"
+                    }
+                },
+                "permission_tree": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.Permission"
+                    }
+                }
+            }
+        },
+        "dto.PolicyCreateReq": {
+            "type": "object",
+            "required": [
+                "associate_id",
+                "associate_type",
+                "policy_name",
+                "policy_type"
+            ],
+            "properties": {
+                "associate_id": {
+                    "type": "integer"
+                },
+                "associate_type": {
+                    "$ref": "#/definitions/enum.AssociateType"
+                },
+                "cron_str": {
+                    "type": "string"
+                },
+                "execute_type": {
+                    "type": "integer"
+                },
+                "policy_name": {
+                    "type": "string"
+                },
+                "policy_type": {
+                    "$ref": "#/definitions/enum.PolicyType"
+                },
+                "single_exec_time": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.PolicyDelReq": {
+            "type": "object",
+            "required": [
+                "policy_id"
+            ],
+            "properties": {
+                "policy_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.PolicyUpdateReq": {
+            "type": "object",
+            "required": [
+                "associate_id",
+                "associate_type",
+                "policy_id",
+                "policy_type"
+            ],
+            "properties": {
+                "associate_id": {
+                    "type": "integer"
+                },
+                "associate_type": {
+                    "$ref": "#/definitions/enum.AssociateType"
+                },
+                "cron_str": {
+                    "type": "string"
+                },
+                "policy_id": {
+                    "type": "integer"
+                },
+                "policy_name": {
+                    "type": "string"
+                },
+                "policy_type": {
+                    "$ref": "#/definitions/enum.PolicyType"
+                },
+                "single_exec_time": {
+                    "type": "integer"
+                },
+                "status": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.ResourcePermissionPutReq": {
+            "type": "object",
+            "required": [
+                "resource_id",
+                "resource_type"
+            ],
+            "properties": {
+                "enable": {
+                    "type": "boolean"
+                },
+                "permission_key": {
+                    "$ref": "#/definitions/enum.PermissionKey"
+                },
+                "resource_id": {
+                    "type": "integer"
+                },
+                "resource_type": {
+                    "$ref": "#/definitions/enum.ResourceType"
+                }
+            }
+        },
+        "dto.ResourcePermissionPutUserReq": {
+            "type": "object",
+            "required": [
+                "resource_id",
+                "resource_type"
+            ],
+            "properties": {
+                "enable": {
+                    "type": "boolean"
+                },
+                "permission_key": {
+                    "$ref": "#/definitions/enum.PermissionKey"
+                },
+                "resource_id": {
+                    "type": "integer"
+                },
+                "resource_type": {
+                    "$ref": "#/definitions/enum.ResourceType"
+                },
+                "user_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.RoleAssignReq": {
+            "type": "object",
+            "required": [
+                "assigned_user_id",
+                "permissions",
+                "role_id"
+            ],
+            "properties": {
+                "assigned_user_id": {
+                    "type": "integer"
+                },
+                "permissions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/enum.PermissionKey"
+                    }
+                },
+                "role_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.RoleCreateReq": {
+            "type": "object",
+            "required": [
+                "role_name"
+            ],
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "menu": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/enum.PermissionKey"
+                    }
+                },
+                "role_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.RoleDelAssignReq": {
+            "type": "object",
+            "required": [
+                "role_id",
+                "user_id"
+            ],
+            "properties": {
+                "role_id": {
+                    "type": "integer"
+                },
+                "user_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.RoleDelReq": {
+            "type": "object",
+            "required": [
+                "role_ids"
+            ],
+            "properties": {
+                "role_ids": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                }
+            }
+        },
+        "dto.RoleDeviceItem": {
+            "type": "object",
+            "properties": {
+                "device_id": {
+                    "type": "integer"
+                },
+                "device_name": {
+                    "type": "string"
+                },
+                "device_type": {
+                    "$ref": "#/definitions/enum.DeviceType"
+                },
+                "ip": {
+                    "type": "string"
+                },
+                "mac": {
+                    "type": "string"
+                },
+                "os_type": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.RoleDeviceList": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.RoleDeviceItem"
+                    }
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.RoleListItem": {
+            "type": "object",
+            "properties": {
+                "create_user": {
+                    "type": "integer"
+                },
+                "create_user_display_name": {
+                    "type": "string"
+                },
+                "create_user_name": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "permissions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.Permission"
+                    }
+                },
+                "role_name": {
+                    "type": "string"
+                },
+                "system_create": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.RoleListRes": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.RoleListItem"
+                    }
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.RolePermission": {
+            "type": "object",
+            "properties": {
+                "keys": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/enum.PermissionKey"
+                    }
+                },
+                "role_id": {
+                    "type": "integer"
+                },
+                "role_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.RoleResourcePermissionRes": {
+            "type": "object",
+            "properties": {
+                "role_permission": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.RolePermission"
+                    }
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.RoleDeviceGroupItem": {
+            "type": "object",
+            "properties": {
+                "device_group_id": {
+                    "type": "integer"
+                },
+                "device_group_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.RoleDeviceGroupList": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.RoleDeviceGroupItem"
+                    }
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.RoleUpdateMenuPermissionReq": {
+            "type": "object",
+            "required": [
+                "role_id"
+            ],
+            "properties": {
+                "menu": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/enum.PermissionKey"
+                    }
+                },
+                "role_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.RoleUpdateReq": {
+            "type": "object",
+            "required": [
+                "role_id"
+            ],
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "menu": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/enum.PermissionKey"
+                    }
+                },
+                "role_id": {
+                    "type": "integer"
+                },
+                "role_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.RoleUserItem": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "phone_number": {
+                    "type": "string"
+                },
+                "user_display_name": {
+                    "type": "string"
+                },
+                "user_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.RoleUserList": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.RoleUserItem"
+                    }
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.DeviceGroupCreateReq": {
+            "type": "object",
+            "required": [
+                "device_group_name"
+            ],
+            "properties": {
+                "device_ids": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "device_group_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.DeviceGroupDelReq": {
+            "type": "object",
+            "required": [
+                "device_group_id"
+            ],
+            "properties": {
+                "device_group_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.DeviceGroupDetail": {
+            "type": "object",
+            "properties": {
+                "devices": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Device"
+                    }
+                },
+                "device_group_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.DeviceGroupListRes": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.DeviceGroupDetail"
+                    }
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.DeviceGroupPolicyDetail": {
+            "type": "object",
+            "properties": {
+                "cron_str": {
+                    "type": "string"
+                },
+                "execute_type": {
+                    "type": "integer"
+                },
+                "policy_id": {
+                    "type": "integer"
+                },
+                "policy_name": {
+                    "type": "string"
+                },
+                "policy_type": {
+                    "$ref": "#/definitions/enum.PolicyType"
+                },
+                "device_group_id": {
+                    "type": "integer"
+                },
+                "device_group_name": {
+                    "type": "string"
+                },
+                "single_exec_time": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.DeviceGroupPolicyListRes": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.DeviceGroupPolicyDetail"
+                    }
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.DeviceGroupUpdateReq": {
+            "type": "object",
+            "required": [
+                "device_group_id"
+            ],
+            "properties": {
+                "new_device_ids": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "device_group_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.UserCreateReq": {
+            "type": "object",
+            "required": [
+                "user_display_name",
+                "user_name"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "phone_number": {
+                    "type": "string"
+                },
+                "role_ids": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "user_display_name": {
+                    "type": "string"
+                },
+                "user_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.UserDeleteReq": {
+            "type": "object",
+            "required": [
+                "user_ids"
+            ],
+            "properties": {
+                "user_ids": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                }
+            }
+        },
+        "dto.UserInfoRes": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "permissions": {
+                    "$ref": "#/definitions/dto.PermissionListRes"
+                },
+                "user_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.UserListItem": {
+            "type": "object",
+            "properties": {
+                "create_user_display_name": {
+                    "type": "string"
+                },
+                "create_user_name": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "permissions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.Permission"
+                    }
+                },
+                "phone_number": {
+                    "type": "string"
+                },
+                "role_infos": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.UserRoleInfo"
+                    }
+                },
+                "user_display_name": {
+                    "type": "string"
+                },
+                "user_id": {
+                    "type": "integer"
+                },
+                "user_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.UserListRes": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.UserListItem"
+                    }
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.UserLoginApiReq": {
+            "type": "object",
+            "required": [
+                "password",
+                "username"
+            ],
+            "properties": {
+                "password": {
+                    "description": "Use DES-DCB encryption",
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.UserLoginApiRes": {
+            "type": "object",
+            "properties": {
+                "access_token": {
+                    "type": "string"
+                },
+                "refresh_token": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.UserPermission": {
+            "type": "object",
+            "properties": {
+                "keys": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/enum.PermissionKey"
+                    }
+                },
+                "user_display_name": {
+                    "type": "string"
+                },
+                "user_id": {
+                    "type": "integer"
+                },
+                "user_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.UserRefreshTokenReq": {
+            "type": "object",
+            "required": [
+                "refresh_token"
+            ],
+            "properties": {
+                "refresh_token": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.UserRefreshTokenRes": {
+            "type": "object",
+            "properties": {
+                "access_token": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.UserResetPasswordReq": {
+            "type": "object",
+            "required": [
+                "user_id"
+            ],
+            "properties": {
+                "password": {
+                    "type": "string"
+                },
+                "user_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.UserResourcePermissionRes": {
+            "type": "object",
+            "properties": {
+                "total": {
+                    "type": "integer"
+                },
+                "user_permission": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.UserPermission"
+                    }
+                }
+            }
+        },
+        "dto.UserRoleInfo": {
+            "type": "object",
+            "properties": {
+                "role_id": {
+                    "type": "integer"
+                },
+                "role_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.UserRoleItem": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "phone_number": {
+                    "type": "string"
+                },
+                "user_display_name": {
+                    "type": "string"
+                },
+                "user_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.UserUpdateInfoReq": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "phone_number": {
+                    "type": "string"
+                },
+                "role_ids": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "user_display_name": {
+                    "type": "string"
+                },
+                "user_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.UserUpdatePasswordApiReq": {
+            "type": "object",
+            "required": [
+                "confirm_password",
+                "new_password",
+                "old_password"
+            ],
+            "properties": {
+                "confirm_password": {
+                    "type": "string"
+                },
+                "new_password": {
+                    "type": "string"
+                },
+                "old_password": {
+                    "description": "Use DES-DCB encryption",
+                    "type": "string"
+                }
+            }
+        },
+        "dto.UserWithRoleList": {
+            "type": "object",
+            "properties": {
+                "can_add_assign_role": {
+                    "type": "boolean"
+                },
+                "can_del_assign_role": {
+                    "type": "boolean"
+                },
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.UserRoleItem"
+                    }
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "enum.AssociateType": {
+            "type": "integer",
+            "enum": [
+                1,
+                2
+            ],
+            "x-enum-varnames": [
+                "AssociateTypeSingle",
+                "AssociateTypeGroup"
+            ]
+        },
+        "enum.DeviceStatus": {
+            "type": "integer",
+            "enum": [
+                0,
+                1
+            ],
+            "x-enum-varnames": [
+                "DeviceStatusOffline",
+                "DeviceStatusOnLine"
+            ]
+        },
+        "enum.DeviceType": {
+            "type": "integer",
+            "enum": [
+                1,
+                2
+            ],
+            "x-enum-varnames": [
+                "DeviceTypePhysical",
+                "DeviceTypeVirtual"
+            ]
+        },
+        "enum.PermissionKey": {
+            "type": "string",
+            "enum": [
+                "view",
+                "edit",
+                "delete",
+                "poweron",
+                "poweroff",
+                "permissionmgmt"
+            ],
+            "x-enum-varnames": [
+                "PermissionKeyView",
+                "PermissionKeyEdit",
+                "PermissionKeyDelete",
+                "PermissionKeyPowerOn",
+                "PermissionKeyPowerOff",
+                "PermissionKeyPermissionMgmt"
+            ]
+        },
+        "enum.PolicyType": {
+            "type": "string",
+            "enum": [
+                "on",
+                "off"
+            ],
+            "x-enum-varnames": [
+                "PolicyTypeOn",
+                "PolicyTypeOff"
+            ]
+        },
+        "enum.ResourceType": {
+            "type": "string",
+            "enum": [
+                "role",
+                "device",
+                "device_group",
+                "user"
+            ],
+            "x-enum-varnames": [
+                "ResourceTypeRole",
+                "ResourceTypeDevice",
+                "ResourceTypeDeviceGroup",
+                "ResourceTypeUser"
+            ]
+        },
+        "models.Device": {
+            "type": "object",
+            "properties": {
+                "createdAt": {
+                    "type": "string"
+                },
+                "device_name": {
+                    "type": "string"
+                },
+                "device_type": {
+                    "description": "1:实体服务器 2:虚拟机",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/enum.DeviceType"
+                        }
+                    ]
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "ip": {
+                    "type": "string"
+                },
+                "mac": {
+                    "type": "string"
+                },
+                "os_type": {
+                    "type": "string"
+                },
+                "status": {
+                    "description": "1:运行中",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/enum.DeviceStatus"
+                        }
+                    ]
+                },
+                "unique_id": {
+                    "type": "string"
+                },
+                "updatedAt": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
